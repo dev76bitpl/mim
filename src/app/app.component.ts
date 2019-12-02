@@ -16,6 +16,7 @@ export class AppComponent {
     private statusBar: StatusBar
   ) {
     this.initializeApp();
+    this.darkTheme();
   }
 
   initializeApp() {
@@ -25,19 +26,21 @@ export class AppComponent {
     });
   }
 
-darkTheme() {
-  // Use matchMedia to check the user preference
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  darkTheme() {
+    console.log("darkTheme()");
+    // Use matchMedia to check the user preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    console.log(prefersDark.matches);
+    //toggleDarkTheme(prefersDark.matches);
+    toggleDarkTheme(true);
 
-toggleDarkTheme(prefersDark.matches);
+    // Listen for changes to the prefers-color-scheme media query
+    prefersDark.addListener((mediaQuery) => toggleDarkTheme(mediaQuery.matches));
 
-// Listen for changes to the prefers-color-scheme media query
-prefersDark.addListener((mediaQuery) => toggleDarkTheme(mediaQuery.matches));
-
-// Add or remove the "dark" class based on if the media query matches
-function toggleDarkTheme(shouldAdd) {
-  document.body.classList.toggle('dark', shouldAdd);
-}
-}
+    // Add or remove the "dark" class based on if the media query matches
+    function toggleDarkTheme(shouldAdd: boolean) {
+      document.body.classList.toggle('dark', shouldAdd);
+    }
+  }
 
 }
