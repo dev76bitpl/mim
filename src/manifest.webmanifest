@@ -1,6 +1,6 @@
 {
-  "name": "app",
-  "short_name": "app",
+  "name": "Magia i miecz - karta gracza",
+  "short_name": "MiM",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

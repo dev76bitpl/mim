@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "magia-i-miecz-karta-gracza"
+    "default": "mim-karta-gracza",
+    "mim-karta-gracza": "mim-karta-gracza"
   }
 }
