@@ -6,4 +6,39 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <form [formGroup]="userData" (ngSubmit)="saveUser()">
+    <ion-list>
+      <ion-item>
+        <ion-label>Twój Nick</ion-label>
+        <ion-input value="ssdssdsd1212" type="text" formControlName="firstname"
+          [class.invalid]="!userData.controls.firstname.valid && (userData.controls.firstname.dirty || submitAttempt)">
+        </ion-input>
+      </ion-item>
+      <ion-item *ngIf="!userData.controls.firstname.valid  && (userData.controls.firstname.dirty || submitAttempt)">
+        <p>{{vuser}}</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Początkowa siła poszukiwacza</ion-label>
+        <ion-input type="number" formControlName="start_sila">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Początkowa moc poszukiwacza</ion-label>
+        <ion-input type="number" formControlName="start_moc">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Opis poszukiwacza</ion-label>
+        <ion-textarea placeholder="dssdds" formControlName="opis">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button color="light" block type="submit" [disabled]="!userData.valid">Submit</button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

@@ -29,7 +29,6 @@ export class Tab1Page {
   }
 
   constructor() {
-    this.updatePoints();
     this.data = this.getUserData();
     console.log("this.data.user", this.data.poszukiwacz);
   }
@@ -80,19 +79,13 @@ export class Tab1Page {
     localStorage.setItem("myemps", JSON.stringify(employees));
   }
 
-  updatePoints() {
+  updatePoints(sila: number, moc: number, wytrzymalosc: number, zloto: number) {
     var userCard = [
       {
-        "uzytkownik": "sabor",
-        "poszukiwacz": "złodziej",
-        "charakter": "zły",
-        "start": "miasto",
-        "start_sila": 12,
-        "sila": 1,
-        "start_moc": 3,
-        "moc": 4,
-        "wytrzymalosc": 3,
-        "zloto": 23
+        "sila": sila,
+        "moc": moc,
+        "wytrzymalosc": wytrzymalosc,
+        "zloto": zloto
       }
     ]
 
