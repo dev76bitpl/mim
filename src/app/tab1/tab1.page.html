@@ -16,19 +16,19 @@
           <ion-col>
             <div>
               <ion-card-subtitle>Poszukiwacz:</ion-card-subtitle>
-              <ion-card-title>Złodziej</ion-card-title>
+              <ion-card-title>{{ data.poszukiwacz }}</ion-card-title>
             </div>
           </ion-col>
           <ion-col>
             <div>
               <ion-card-subtitle>Charakter:</ion-card-subtitle>
-              <ion-card-title>Neutralny</ion-card-title>
+              <ion-card-title>{{ data.charakter }}</ion-card-title>
             </div>
           </ion-col>
           <ion-col>
             <div>
               <ion-card-subtitle>Start:</ion-card-subtitle>
-              <ion-card-title>Miasto</ion-card-title>
+              <ion-card-title>{{ data.start }}</ion-card-title>
             </div>
           </ion-col>
         </ion-row>
@@ -50,29 +50,17 @@
         <ion-col class="box-field" [attr.size-lg]="this.sizelg" [attr.size-md]="this.sizemd"
           [attr.size-sm]="this.sizesm" [attr.size-xs]="this.sizexs">
           <ion-row class="ion-align-items-start ion-justify-content-start">
-            <ion-col class="ion-text-left" size="4">
-              <ion-icon class="addel" color="warning" name="remove-circle"></ion-icon>
+            <ion-col class="ion-align-self-center ion-text-center" size="6">
+              <ion-text class="card-title">{{ feature.sila }}</ion-text>
             </ion-col>
-            <ion-col class="ion-align-self-center ion-text-center" size="4">
-              <ion-text class="card-title">siła</ion-text>
+            <ion-col class="ion-text-left" size="2">
+              <ion-icon class="addel" color="danger" name="remove-circle" (click)="pointPicker(-1, 'sila')"></ion-icon>
             </ion-col>
-            <ion-col class="ion-text-right" size="4">
-              <ion-icon class="addel" color="warning" name="add-circle"></ion-icon>
+            <ion-col class="ion-align-self-center ion-text-center" size="2">
+              <ion-text class="card-number">{{ data.sila }}</ion-text>
             </ion-col>
-          </ion-row>
-        </ion-col>
-
-        <ion-col class="box-field" [attr.size-lg]="this.sizelg" [attr.size-md]="this.sizemd"
-          [attr.size-sm]="this.sizesm" [attr.size-xs]="this.sizexs">
-          <ion-row class="ion-align-items-start ion-justify-content-start">
-            <ion-col class="ion-text-left" size="4">
-              <ion-icon class="addel" color="warning" name="remove-circle"></ion-icon>
-            </ion-col>
-            <ion-col class="ion-align-self-center ion-text-center" size="4">
-              <ion-text class="card-title">moc</ion-text>
-            </ion-col>
-            <ion-col class="ion-text-right" size="4">
-              <ion-icon class="addel" color="warning" name="add-circle"></ion-icon>
+            <ion-col class="ion-text-right" size="2">
+              <ion-icon class="addel" color="danger" name="add-circle" (click)="pointPicker(1, 'sila')"></ion-icon>
             </ion-col>
           </ion-row>
         </ion-col>
@@ -80,14 +68,17 @@
         <ion-col class="box-field" [attr.size-lg]="this.sizelg" [attr.size-md]="this.sizemd"
           [attr.size-sm]="this.sizesm" [attr.size-xs]="this.sizexs">
           <ion-row class="ion-align-items-start ion-justify-content-start">
-            <ion-col class="ion-text-left" size="4">
-              <ion-icon class="addel" color="warning" name="remove-circle"></ion-icon>
+            <ion-col class="ion-align-self-center ion-text-center" size="6">
+              <ion-text class="card-title">{{ feature.moc }}</ion-text>
             </ion-col>
-            <ion-col class="ion-align-self-center ion-text-center" size="4">
-              <ion-text class="card-title">wytrzymałość</ion-text>
+            <ion-col class="ion-text-left" size="2">
+              <ion-icon class="addel" color="primary" name="remove-circle" (click)="pointPicker(-1, 'moc')"></ion-icon>
             </ion-col>
-            <ion-col class="ion-text-right" size="4">
-              <ion-icon class="addel" color="warning" name="add-circle"></ion-icon>
+            <ion-col class="ion-align-self-center ion-text-center" size="2">
+              <ion-text class="card-number">{{ data.moc }}</ion-text>
+            </ion-col>
+            <ion-col class="ion-text-right" size="2">
+              <ion-icon class="addel" color="primary" name="add-circle" (click)="pointPicker(1, 'moc')"></ion-icon>
             </ion-col>
           </ion-row>
         </ion-col>
@@ -95,14 +86,38 @@
         <ion-col class="box-field" [attr.size-lg]="this.sizelg" [attr.size-md]="this.sizemd"
           [attr.size-sm]="this.sizesm" [attr.size-xs]="this.sizexs">
           <ion-row class="ion-align-items-start ion-justify-content-start">
-            <ion-col class="ion-text-left" size="4">
-              <ion-icon class="addel" color="warning" name="remove-circle"></ion-icon>
+            <ion-col class="ion-align-self-center ion-text-center" size="6">
+              <ion-text class="card-title">{{ feature.wytrzymalosc }}</ion-text>
             </ion-col>
-            <ion-col class="ion-align-self-center ion-text-center" size="4">
-              <ion-text class="card-title">złoto</ion-text>
+            <ion-col class="ion-text-left" size="2">
+              <ion-icon class="addel" color="success" name="remove-circle" (click)="pointPicker(-1, 'wytrzymalosc')">
+              </ion-icon>
             </ion-col>
-            <ion-col class="ion-text-right" size="4">
-              <ion-icon class="addel" color="warning" name="add-circle"></ion-icon>
+            <ion-col class="ion-align-self-center ion-text-center" size="2">
+              <ion-text class="card-number">{{ data.wytrzymalosc }}</ion-text>
+            </ion-col>
+            <ion-col class="ion-text-right" size="2">
+              <ion-icon class="addel" color="success" name="add-circle" (click)="pointPicker(1, 'wytrzymalosc')">
+              </ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <ion-col class="box-field" [attr.size-lg]="this.sizelg" [attr.size-md]="this.sizemd"
+          [attr.size-sm]="this.sizesm" [attr.size-xs]="this.sizexs">
+          <ion-row class="ion-align-items-start ion-justify-content-start">
+            <ion-col class="ion-align-self-center ion-text-center" size="6">
+              <ion-text class="card-title">{{ feature.zloto }}</ion-text>
+            </ion-col>
+            <ion-col class="ion-text-left" size="2">
+              <ion-icon class="addel" color="warning" name="remove-circle" (click)="pointPicker(-1, 'zloto')">
+              </ion-icon>
+            </ion-col>
+            <ion-col class="ion-align-self-center ion-text-center" size="2">
+              <ion-text class="card-number">{{ data.zloto }}</ion-text>
+            </ion-col>
+            <ion-col class="ion-text-right" size="2">
+              <ion-icon class="addel" color="warning" name="add-circle" (click)="pointPicker(1, 'zloto')"></ion-icon>
             </ion-col>
           </ion-row>
         </ion-col>

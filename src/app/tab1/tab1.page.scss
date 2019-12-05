@@ -29,8 +29,15 @@ ion-icon.addel {
 
 .card-title {
   display: block;
-  font-size: 1.4em;
+  font-size: 1.2em;
+  color: --ion-color-dark-tint;
   text-transform: uppercase;
+}
+
+.card-number {
+  display: block;
+  font-size: 1.9em;
+  font-weight: 700;
 }
 
 .box-field {
