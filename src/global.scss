@@ -198,7 +198,7 @@ ion-item {
 
 ion-title,
 ion-label,
-on-card-title {
+ion-card-title {
     font-family: 'Windlass PL', Georgia, 'Times New Roman', Times, serif !important;
     text-transform: lowercase;
 }
@@ -224,6 +224,16 @@ on-card-title {
     max-height: 35vh;
     height: 250px;
     background-image: url(assets/images/main-top.jpg);
+    background-repeat: no-repeat;
+    background-size: inherit;
+    background-position: center;
+}
+
+.main2-top-img {
+    /* Location of the image */
+    max-height: 35vh;
+    height: 250px;
+    background-image: url(assets/images/main2-top.jpg);
     background-repeat: no-repeat;
     background-size: inherit;
     background-position: center;
@@ -260,4 +270,22 @@ ion-icon.addel {
     background-color: black;
     border: 5px solid var(--ion-item-background, var(--ion-background-color, #fff));
     border-radius: 15px;
+}
+
+.alertSuccess {
+    --background: #2fdf75 !important;
+}
+
+.alertSuccessBtn {
+    background-color: #29c467 !important;
+    color: #fff !important;
+}
+
+.alertError {
+    --background: #ff4961 !important;
+}
+
+.alertErrorBtn {
+    background-color: #e04055 !important;
+    color: #fff !important;
 }

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Magia i miecz - karta gracza
+      Magia i miecz - karta poszukiwacza
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,8 +9,9 @@
 
 <ion-content>
   <ion-card class="welcome-card">
-    <div class="main-top-img"></div>
+    <div class="main2-top-img"></div>
     <ion-card-header>
+      Do rozgrywki potrzebna jest stworzone karta poszukiwacza. Stwórz teraz Twoją kartę poszukiwacza.
     </ion-card-header>
     <ion-card-content>
       <ion-grid>
@@ -65,7 +66,8 @@
                 </ion-item>
 
                 <ion-item>
-                  <ion-button expand="block" type="submit" [disabled]="!userData.valid" fill="outline">zapisz
+                  <ion-button expand="block" size="large" type="submit" [disabled]="!userData.valid" fill="outline">
+                    zapisz
                   </ion-button>
                 </ion-item>
               </ion-list>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HelperService } from '../service/helper.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -13,12 +14,14 @@ export class Tab1Page {
   sizexs: number = 12;
   type: string;
   userData = {};
+  pointsData = {}
   data: any;
+  points: any;
 
   public point = {
     moc: 0,
     zloto: 0,
-    sila: 12,
+    sila: 0,
     wytrzymalosc: 0
   }
 
@@ -29,10 +32,47 @@ export class Tab1Page {
     wytrzymalosc: "wytrzymałość"
   }
 
-  constructor(public helper: HelperService) {
-    //this.updatePoints(1, 1, 1, 1);
-    this.data = this.helper.getUserData(this.userData);
-    console.log("this.data.user", this.data.poszukiwacz);
+  constructor(public helper: HelperService, public alertController: AlertController) {
+
+    if (localStorage.getItem("card") === null || localStorage.getItem("points") === null)
+      this.initDb();
+    this.data = this.helper.getUserData();
+    this.points = this.helper.getUserPoints();
+    this.starterPoints();
+    //console.log("this.data.user", this.data.poszukiwacz);
+
+    if (!this.data.poszukiwacz) {
+      this.noCardAlert();
+    }
+  }
+
+
+  async noCardAlert() {
+    const alert = await this.alertController.create({
+      header: 'Karta poszukiwacza',
+      subHeader: '',
+      message: 'Nie posiadasz karty poszukiwacza. Idź do zakładki Ustawienia karty i stwórz ją.',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'cancel',
+          cssClass: 'alertErrorBtn',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }],
+      cssClass: 'alertError',
+      mode: 'ios',
+    });
+
+    await alert.present();
+  }
+
+  starterPoints() {
+    this.point.sila = this.data.start_sila + this.points.sila;
+    this.point.moc = this.data.start_moc + this.points.moc;
+    this.point.wytrzymalosc = this.points.wytrzymalosc;
+    this.point.zloto = this.points.zloto;
   }
 
   pointPicker(i: number, type: string) {
@@ -57,6 +97,7 @@ export class Tab1Page {
         console.log("default type: ", type);
         break;
     }
+    this.updatePoints(this.point.sila - this.data.start_sila, this.point.moc - this.data.start_moc, this.point.wytrzymalosc, this.point.zloto);
   }
 
   test() {
@@ -82,7 +123,7 @@ export class Tab1Page {
   }
 
   updatePoints(sila: number, moc: number, wytrzymalosc: number, zloto: number) {
-    var userCard = [
+    var points = [
       {
         "sila": sila,
         "moc": moc,
@@ -91,7 +132,30 @@ export class Tab1Page {
       }
     ]
 
-    localStorage.setItem("userCard", JSON.stringify(userCard));
+    localStorage.setItem("points", JSON.stringify(points));
   }
 
+  initDb() {
+    var card = [
+      {
+        "uzytkownik": "",
+        "poszukiwacz": "",
+        "charakter": "",
+        "start": "",
+        "start_sila": "",
+        "start_moc": ""
+      }
+    ];
+    localStorage.setItem("card", JSON.stringify(card));
+    var points = [
+      {
+        "sila": 0,
+        "moc": 0,
+        "wytrzymalosc": 0,
+        "zloto": 0
+      }
+    ]
+
+    localStorage.setItem("points", JSON.stringify(points));
+  }
 }
