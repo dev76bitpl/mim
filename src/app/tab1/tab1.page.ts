@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HelperService } from '../service/helper.service';
 
 @Component({
   selector: 'app-tab1',
@@ -28,8 +29,9 @@ export class Tab1Page {
     wytrzymalosc: "wytrzymałość"
   }
 
-  constructor() {
-    this.data = this.getUserData();
+  constructor(public helper: HelperService) {
+    //this.updatePoints(1, 1, 1, 1);
+    this.data = this.helper.getUserData(this.userData);
     console.log("this.data.user", this.data.poszukiwacz);
   }
 
@@ -90,20 +92,6 @@ export class Tab1Page {
     ]
 
     localStorage.setItem("userCard", JSON.stringify(userCard));
-  }
-
-  getUserData() {
-    const localData = localStorage.getItem('userCard');
-    try {
-      if (localData) {
-        this.userData = JSON.parse(localData);
-        //console.log('Data loaded', localData);
-        console.log('Data loaded', this.userData[0]);
-        return this.userData[0];
-      }
-    } catch (error) {
-      console.log('error', error);
-    }
   }
 
 }
